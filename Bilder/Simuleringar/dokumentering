@@ -1,0 +1,6 @@
+Simulering 1-
+	2x npn & pnp i mosfet drivaren
+	20 ohm gatemotstånd
+	strömmarna i samtliga transistorer är >100mA
+	~63% effektivitet vid 16V & 80mA
+
