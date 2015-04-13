@@ -1,0 +1,57 @@
+* Z:\home\victor\Documents\Projekt\teensyBenchPower\Hardware\LtSpice Simulations\teensySMPS.asc
+V§usb USB 0 5.3
+L1 Vin Vsw+ 50µ
+D1 Vsw+ out+ MBR735
+C1 out+ 0 47µ
+V2 PWM+ 0 PULSE(0 3.3 0 0.5n 0.5n 1.5u 5u)
+R§load+ out+ 0 400
+M2 Vsw+ N001 0 0 IRLHS6242
+R2 PWM+ N004 1k
+Q1 N003 N004 0 0 BC546B
+Q2 N002 N003 0 0 BC546B
+R4 N003 Vin 1k
+R5 Vin N002 1.5k
+R6 N002 0 150k
+Q3 Vin N002 N001 0 2N4401
+Q4 0 N002 N001 0 2N4403
+Q5 Vin N007 N006 0 BCW68F
+R9 N007 0 820
+Q6 N007 N005 USB 0 BC556B
+R8 N005 N006 1k
+Rsense USB N006 1.3
+C2 Vin 0 2.2µ
+M1 Vsw- N010 0 0 IRLHS6242
+L2 Vin Vsw- 50µ
+D2 N008 0 MBR735
+C3 Vsw- N008 10µ
+R§load- out- 0 400
+L3 N008 out- 50µ
+C4 out- 0 47µ
+V1 PWM- 0 PULSE(0 3.3 2.5u 0.5n 0.5n 1.5u 5u)
+R1 PWM- N012 1k
+Q7 N011 N012 0 0 BC546B
+Q8 N009 N011 0 0 BC546B
+R3 N011 Vin 1k
+R7 Vin N009 1.5k
+R10 N009 0 150k
+Q9 Vin N009 N010 0 2N4401
+Q10 0 N009 N010 0 2N4403
+C5 Vin 0 2.2µ
+.model D D
+.lib C:\Program Files (x86)\LTC\LTspiceIV\lib\cmp\standard.dio
+.model NPN NPN
+.model PNP PNP
+.lib C:\Program Files (x86)\LTC\LTspiceIV\lib\cmp\standard.bjt
+.model NMOS NMOS
+.model PMOS PMOS
+.lib C:\Program Files (x86)\LTC\LTspiceIV\lib\cmp\standard.mos
+.tran 0 100m 0 1m
+* USB in
+* ~450-500mA current limiter
+* Teensy PWM out
+* 3.3V to 5V level shifter
+* Totem-pole mosfet driver
+* Basic boost converter
+* = 0,7 / I_max
+.backanno
+.end
